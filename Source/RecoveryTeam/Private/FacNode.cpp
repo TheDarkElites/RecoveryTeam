@@ -15,14 +15,10 @@ AFacNode::AFacNode()
 	nodeMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	RootComponent = nodeMesh;
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(TEXT("StaticMesh'/Game/FacilityParts/NodePlaceHolder.NodePlaceHolder'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(*ModelPath);
 	UStaticMesh* Asset = MeshAsset.Object;
 
 	nodeMesh->SetStaticMesh(Asset);
-
-	DebugTextRenderComponent = CreateDefaultSubobject<UTextRenderComponent>(TEXT("TextRenderComponent"));
-	DebugTextRenderComponent->SetupAttachment(RootComponent); // Attach to the root component
-	DebugTextRenderComponent->SetTextRenderColor(FColor::Black);
 
 	Connections = { {FVector::ForwardVector,MCON},{FVector::BackwardVector,MCON}, {FVector::RightVector,MCON}, {FVector::LeftVector,MCON}, {FVector::UpVector,MCON}, {FVector::DownVector,MCON} };
 }

@@ -115,16 +115,6 @@ void FacilityGenerator::GenerateFacility(std::unordered_map<FVector, AFacNode*, 
 
 			//Now we insert our new node into the stack and matrix
 
-			FString DebugText = NewNode->coordinates.ToString() + ": Direction: ";
-			/*for (const auto& DdirIterator : NewNode->Connections.Connections)
-			{
-				FVector Ddirection = DdirIterator.first;
-				short Ddirectiontype = DdirIterator.second;
-				DebugText += Ddirection.ToString() + "Type: " + FString(std::to_string(Ddirectiontype).c_str());
-			}*/
-
-			NewNode->DebugTextRenderComponent->SetText(FText::FromString(DebugText));
-
 			GenerationalMatrix.emplace(std::pair<FVector, AFacNode*>(NewNode->coordinates, NewNode));
 			GenerationalStack.push(NewNode);
 
@@ -152,8 +142,8 @@ void FacilityGenerator::GenerateFacility(std::unordered_map<FVector, AFacNode*, 
 		FVector Key = MapEntry.first;        // Key is the FVector
 		AFacNode* NodePtr = MapEntry.second;  // NodePtr is a pointer to the AFacNode associated with the key
 
-		// Check if the pointer is valid before accessing
-		if (NodePtr)
+		//Check if the pointer is valid before accessing
+		//if (NodePtr)
 		{
 			// Output the values using Unreal Engine 5 logging
 			for (const auto& dirIterator : NodePtr->Connections.Connections)

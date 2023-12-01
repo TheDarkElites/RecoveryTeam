@@ -26,10 +26,6 @@ public:
 	// Our location in coordinates of nodes, not transform
 	UPROPERTY(VisibleAnywhere)
 	FVector coordinates{};
-
-	//Our debug text
-	UPROPERTY(VisibleAnywhere)
-	UTextRenderComponent* DebugTextRenderComponent;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -37,5 +33,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+private:
+	//Our path to our model
+	FString ModelPath = TEXT("StaticMesh'/Game/FacilityParts/Meshes/Planner/NodePlaceHolder.NodePlaceHolder'");
 };
